@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Información</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Información</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Región</th>
+                    <th>Gobernación Marítima</th>
+                    <th>Capitanía de Puerto</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for informacion in informacion_list %}
+                <tr>
+                    <td>{{ informacion.region }}</td>
+                    <td>{{ informacion.gobernacion_maritima }}</td>
+                    <td>{{ informacion.capitania_puerto }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

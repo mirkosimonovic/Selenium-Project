@@ -1,0 +1,30 @@
+<!-- consultas/resultado.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados de Consulta</title>
+</head>
+<body>
+    <h1>Resultados de Consulta</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Fecha</th>
+                <th>Resumen</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for resultado in resultados %}
+            <tr>
+                <td>{{ resultado.titulo }}</td>
+                <td>{{ resultado.fecha }}</td>
+                <td>{{ resultado.resumen }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
