@@ -9,9 +9,10 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+import django
+django.setup()
 
 from pathlib import Path
-from django.db import connection 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,6 +34,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sessions',
@@ -41,8 +43,6 @@ INSTALLED_APPS = [
     'consultas'
 
 ]
-import django
-django.setup()
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -141,4 +141,3 @@ LOGGING = {
         'level': 'DEBUG',
     },
 }
-

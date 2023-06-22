@@ -5,8 +5,9 @@ class Jurisprudencia(models.Model):
     titulo = models.CharField(max_length=100)
     fecha = models.DateField()
     resumen = models.TextField()
-
+    
     def __str__(self):
         return self.titulo
+    
     class Meta:
         app_label = 'consultas'
