@@ -2,13 +2,16 @@
 <html>
 <head>
     <title>Información</title>
+    <!-- Incluir el archivo CSS de Bootstrap -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container">
         <h1>Información</h1>
+        <!-- Crear una tabla con la clase "table" de Bootstrap -->
         <table class="table">
             <thead>
+                <!-- Fila de encabezado de la tabla -->
                 <tr>
                     <th>Región</th>
                     <th>Gobernación Marítima</th>
@@ -16,8 +19,10 @@
                 </tr>
             </thead>
             <tbody>
+                <!-- Ciclo para mostrar los elementos de "informacion_list" -->
                 {% for informacion in informacion_list %}
                 <tr>
+                    <!-- Celdas de datos con los valores de "informacion" -->
                     <td>{{ informacion.region }}</td>
                     <td>{{ informacion.gobernacion_maritima }}</td>
                     <td>{{ informacion.capitania_puerto }}</td>
@@ -26,6 +31,7 @@
             </tbody>
         </table>
     </div>
+    <!-- Incluir el archivo JS de Bootstrap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -7,15 +7,29 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from django.shortcuts import render
 from .models import Informacion
-
+import traceback
 
 def ejecutar_script_selenium(request):
+    """
+    Vista que ejecuta un script de Selenium para obtener datos de una página web.
+    
+    Esta vista configura Selenium, realiza las acciones necesarias en la página web,
+    extrae los datos requeridos y los guarda en un archivo JSON.
+    
+    Args:
+        request: Objeto HttpRequest que contiene la solicitud HTTP recibida.
+    
+    Returns:
+        HttpResponse: Objeto HttpResponse con un mensaje indicando el resultado de la ejecución.
+    """
+    
     # Configuración de Selenium
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
-    driver = webdriver.Chrome('C:\\Users\\M\\Desktop\\chromedriver_win32', options=chrome_options)
+    
+    driver = webdriver.Chrome('./drivers/chromedriver.exe', options=chrome_options)
     
     try:
         # Código de Selenium
@@ -49,11 +63,25 @@ def ejecutar_script_selenium(request):
         
         # Devuelve una respuesta o realiza cualquier otra operación con los datos obtenidos
         return HttpResponse("Script de Selenium ejecutado correctamente.")
+    
     except Exception as e:
+        traceback.print_exc()
         # Manejo de errores
         return HttpResponse(f"Error en la ejecución del script de Selenium: {str(e)}")
 
 def obtener_datos_pagina(driver):
+    """
+    Función que obtiene los datos de la página actual.
+    
+    Esta función utiliza Selenium para extraer los datos requeridos de la tabla en la página web.
+    
+    Args:
+        driver: Objeto WebDriver de Selenium.
+    
+    Returns:
+        list: Lista de diccionarios que contienen los datos de la página actual.
+    """
+    
     # Lógica para obtener los datos de la tabla en la página actual
     # Puedes utilizar las funciones y métodos necesarios para extraer los datos de las filas y columnas de la tabla
     # y devolverlos en una estructura de datos adecuada, como una lista de diccionarios
@@ -68,6 +96,15 @@ def obtener_datos_pagina(driver):
     return datos_pagina
 
 def siguiente_pagina(driver):
+    """
+    Función que navega a la siguiente página.
+    
+    Esta función utiliza Selenium para hacer clic en el botón o enlace que lleva a la siguiente página.
+    
+    Args:
+        driver: Objeto WebDriver de Selenium.
+    """
+    
     # Lógica para ir a la siguiente página
     # Puedes utilizar las funciones y métodos necesarios para hacer clic en el botón o enlace que lleva a la siguiente página
     
@@ -76,12 +113,30 @@ def siguiente_pagina(driver):
     boton_siguiente.click()
 
 def guardar_datos_json(data):
+    """
+    Función que guarda los datos en un archivo JSON.
+    
+    Args:
+        data: Lista de diccionarios con los datos a guardar.
+    """
+    
     # Guardar los datos en un archivo JSON
     with open('datos.json', 'w') as file:
         json.dump(data, file)
 
 def mostrar_informacion(request):
+    """
+    Vista que muestra la información guardada en la base de datos.
+    
+    Esta vista obtiene los registros de la base de datos y los muestra en una plantilla HTML.
+    
+    Args:
+        request: Objeto HttpRequest que contiene la solicitud HTTP recibida.
+    
+    Returns:
+        HttpResponse: Objeto HttpResponse con el contenido HTML de la página.
+    """
+    
     informacion_list = Informacion.objects.all()
     context = {'informacion_list': informacion_list}
     return render(request, 'informacion.html', context)
-

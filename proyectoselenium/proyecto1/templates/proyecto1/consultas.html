@@ -8,6 +8,7 @@
 <body>
     <h1>Resultados de Consulta</h1>
 
+    <!-- Encabezado de la tabla -->
     <table>
         <thead>
             <tr>
@@ -17,6 +18,7 @@
             </tr>
         </thead>
         <tbody>
+            <!-- Ciclo para mostrar los resultados -->
             {% for resultado in resultados %}
             <tr>
                 <td>{{ resultado.titulo }}</td>
