@@ -1,0 +1,6 @@
+Folder PATH listing
+Volume serial number is 000000DF F609:4024
+C:\USERS\M\PRUEBA\PRUEBAPRACTICA\-A
+Invalid path - \USERS\M\PRUEBA\PRUEBAPRACTICA\-A
+No subfolders exist 
+

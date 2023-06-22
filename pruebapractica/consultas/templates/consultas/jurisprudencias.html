@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jurisprudencias</title>
+    <!-- Incluye los estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Jurisprudencias</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Fecha</th>
+                    <th>Resumen</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for jurisprudencia in jurisprudencias %}
+                    <tr>
+                        <td>{{ jurisprudencia.titulo }}</td>
+                        <td>{{ jurisprudencia.fecha }}</td>
+                        <td>{{ jurisprudencia.resumen }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Incluye los scripts de Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
